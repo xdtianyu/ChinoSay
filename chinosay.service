@@ -1,0 +1,15 @@
+[Unit]
+Description=ChinoSay service
+After=network.target
+
+[Service]
+ExecStart=/opt/chinosay/venv/bin/python /opt/chinosay/bot.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=chinosay
+User=nobody
+Group=nogroup
+
+[Install]
+WantedBy=multi-user.target
