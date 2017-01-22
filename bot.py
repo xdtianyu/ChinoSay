@@ -20,6 +20,7 @@ dispatcher = updater.dispatcher
 
 path = os.path.dirname(os.path.realpath(__file__))
 
+
 def start(bot, update):
     bot.sendPhoto(chat_id=update.message.chat_id, photo=open(path + '/chino.jpg', 'rb'))
 
@@ -38,15 +39,15 @@ def inline_caps(bot, update):
     if not query:
         return
     results = list()
-    name = chino.say(query)
+    name, w, h = chino.say(query)
     results.append(
         InlineQueryResultPhoto(
             id=query.upper(),
             title='智乃 说',
             photo_url=base_url + name,
             thumb_url=base_url + name,
-            photo_width=chino.W,
-            photo_height=chino.H,
+            photo_width=w,
+            photo_height=h,
             description=query
         )
     )

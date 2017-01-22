@@ -8,22 +8,32 @@ from PIL import ImageDraw
 import os
 
 
-W, H = (561, 450)
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
+font = '/wqy-microhei.ttc'
+
+img1 = ('/chino.jpg', (255, 255, 255), 561, 450, 48)
+img2 = ('/chino2.jpg', (0, 0, 0), 272, 290, 24)
 
 
 def say(msg):
-    img = Image.open(path + '/chino.jpg').convert("RGB")
+    bg = img1
+
+    if msg.startswith('/2 '):
+        bg = img2
+        msg = msg[3:]
+
+    src, color, i_width, i_height, size = bg
+    img = Image.open(path + src).convert("RGB")
 
     draw = ImageDraw.Draw(img)
-    fnt = ImageFont.truetype(path + "/wqy-microhei.ttc", size=48)
+    fnt = ImageFont.truetype(path + font, size=size)
     w, h = draw.textsize(msg, font=fnt)
     lines = textwrap.wrap(msg, width=10)
-    y_text = H - h - 10
+    y_text = i_height - h - 10
     for line in reversed(lines):
         width, height = draw.textsize(line, font=fnt)
-        draw.text(((W - width) / 2, y_text), line, (255, 255, 255), font=fnt)
+        draw.text(((i_width - width) / 2, y_text), line, color, font=fnt)
         y_text -= height
 
     # img.show()
@@ -38,4 +48,4 @@ def say(msg):
         os.makedirs(path + '/' + cache_dir)
 
     img.save(path + '/' + name)
-    return name
+    return name, i_width, i_height
