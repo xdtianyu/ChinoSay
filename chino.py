@@ -13,7 +13,7 @@ cache_dir = 'data/'
 font = '/wqy-microhei.ttc'
 
 img1 = ('/chino.jpg', (255, 255, 255), 561, 450, 48)
-img2 = ('/chino2.jpg', (0, 0, 0), 272, 290, 24)
+img2 = ('/chino2.jpg', (0, 0, 0), 544, 580, 48)
 
 
 def say(msg):
