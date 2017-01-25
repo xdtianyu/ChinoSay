@@ -7,6 +7,8 @@ from PIL import Image
 from PIL import ImageDraw
 import os
 
+
+version = "1.0.0"
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
 font = '/NotoSansCJK-Regular.ttc'
@@ -30,7 +32,7 @@ def gen(image, msg):
     import hashlib
 
     sha1 = hashlib.sha1()
-    sha1.update((msg + str(image)).encode('utf-8'))
+    sha1.update((msg + str(image) + version).encode('utf-8'))
     name = cache_dir + sha1.hexdigest() + '.jpg'
     thumb = cache_dir + sha1.hexdigest() + '_thumb.jpg'
 
