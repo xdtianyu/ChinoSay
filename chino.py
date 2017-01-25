@@ -9,7 +9,7 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
-font = '/DroidSansFallbackFull.ttf'
+font = '/NotoSansCJK-Regular.ttc'
 
 images = [
     ('/chino.jpg', (255, 255, 255), 561, 450, 48, (256, 256)),
