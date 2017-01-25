@@ -37,7 +37,7 @@ def caps(bot, update, args):
 def inline_caps(bot, update):
     query = update.inline_query.query
     if not query:
-        return
+        query = ""
     results = list()
     images = chino.say(query)
     for image in images:
