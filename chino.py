@@ -7,7 +7,6 @@ from PIL import Image
 from PIL import ImageDraw
 import os
 
-
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
 font = '/wqy-microhei.ttc'
@@ -32,7 +31,7 @@ def gen(image, msg):
     import hashlib
 
     sha1 = hashlib.sha1()
-    sha1.update((msg+src+''.join(color)+i_width+i_height+size).encode('utf-8'))
+    sha1.update((msg + str(image)).encode('utf-8'))
     name = cache_dir + sha1.hexdigest() + '.jpg'
     thumb = cache_dir + sha1.hexdigest() + '_thumb.jpg'
 
@@ -53,6 +52,6 @@ def gen(image, msg):
         # img.show()
         img.save(path + '/' + name)
         img.thumbnail(thumb_size)
-        img.save(path + thumb)
+        img.save(path + '/' + thumb)
 
     return thumb, name, i_width, i_height
