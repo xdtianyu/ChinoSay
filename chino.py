@@ -12,18 +12,21 @@ path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
 font = '/wqy-microhei.ttc'
 
-img1 = ('/chino.jpg', (255, 255, 255), 561, 450, 48)
-img2 = ('/chino2.jpg', (0, 0, 0), 544, 580, 48)
+images = [
+    ('/chino.jpg', (255, 255, 255), 561, 450, 48),
+    ('/chino2.jpg', (0, 0, 0), 544, 580, 48)
+]
 
 
 def say(msg):
-    bg = img1
+    results = list()
+    for image in images:
+        results.append(gen(image, msg))
+    return results
 
-    if msg.startswith('/2 '):
-        bg = img2
-        msg = msg[3:]
 
-    src, color, i_width, i_height, size = bg
+def gen(image, msg):
+    src, color, i_width, i_height, size = image
     img = Image.open(path + src).convert("RGB")
 
     draw = ImageDraw.Draw(img)

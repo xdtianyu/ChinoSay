@@ -39,18 +39,20 @@ def inline_caps(bot, update):
     if not query:
         return
     results = list()
-    name, w, h = chino.say(query)
-    results.append(
-        InlineQueryResultPhoto(
-            id=query.upper(),
-            title='智乃 说',
-            photo_url=base_url + name,
-            thumb_url=base_url + name,
-            photo_width=w,
-            photo_height=h,
-            description=query
+    images = chino.say(query)
+    for image in images:
+        name, w, h = image
+        results.append(
+            InlineQueryResultPhoto(
+                id=query.upper(),
+                title='智乃 说',
+                photo_url=base_url + name,
+                thumb_url=base_url + name,
+                photo_width=w,
+                photo_height=h,
+                description=query
+            )
         )
-    )
     bot.answerInlineQuery(update.inline_query.id, results)
 
 
