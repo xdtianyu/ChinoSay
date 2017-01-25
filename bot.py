@@ -41,13 +41,13 @@ def inline_caps(bot, update):
     results = list()
     images = chino.say(query)
     for image in images:
-        name, w, h = image
+        thumb, name, w, h = image
         results.append(
             InlineQueryResultPhoto(
                 id=query.upper(),
                 title='智乃 说',
                 photo_url=base_url + name,
-                thumb_url=base_url + name,
+                thumb_url=base_url + thumb,
                 photo_width=w,
                 photo_height=h,
                 description=query
