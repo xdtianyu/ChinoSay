@@ -44,7 +44,7 @@ def inline_caps(bot, update):
         thumb, name, w, h = image
         results.append(
             InlineQueryResultPhoto(
-                id=query.upper(),
+                id=name,
                 title='智乃 说',
                 photo_url=base_url + name,
                 thumb_url=base_url + thumb,
