@@ -10,11 +10,10 @@ import os
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
 font = '/wqy-microhei.ttc'
-thumb_size = (128, 128)
 
 images = [
-    ('/chino.jpg', (255, 255, 255), 561, 450, 48),
-    ('/chino2.jpg', (0, 0, 0), 544, 545, 48)
+    ('/chino.jpg', (255, 255, 255), 561, 450, 48, (256, 256)),
+    ('/chino2.jpg', (0, 0, 0), 544, 545, 48, (256, 256))
 ]
 
 
@@ -26,7 +25,7 @@ def say(msg):
 
 
 def gen(image, msg):
-    src, color, i_width, i_height, size = image
+    src, color, i_width, i_height, size, thumb_size = image
 
     import hashlib
 
