@@ -32,7 +32,7 @@ def gen(image, msg):
     import hashlib
 
     sha1 = hashlib.sha1()
-    sha1.update((msg+src+color+i_width+i_height+size).encode('utf-8'))
+    sha1.update((msg+src+''.join(color)+i_width+i_height+size).encode('utf-8'))
     name = cache_dir + sha1.hexdigest() + '.jpg'
     thumb = cache_dir + sha1.hexdigest() + '_thumb.jpg'
 
