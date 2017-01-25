@@ -9,7 +9,7 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 cache_dir = 'data/'
-font = '/wqy-microhei.ttc'
+font = '/DroidSansFallbackFull.ttf'
 
 images = [
     ('/chino.jpg', (255, 255, 255), 561, 450, 48, (256, 256)),
@@ -54,3 +54,5 @@ def gen(image, msg):
         img.save(path + '/' + thumb)
 
     return thumb, name, i_width, i_height
+
+gen(images[0], "哦哦哦")
